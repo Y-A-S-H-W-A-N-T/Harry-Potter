@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { useState } from "react"
 import style from '../styles/Home.module.css'
-import Back from '../public/harry.jpg'
 
 export default function Home() { 
   

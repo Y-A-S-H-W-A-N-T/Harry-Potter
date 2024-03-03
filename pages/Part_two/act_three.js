@@ -28,7 +28,7 @@ export default function ACT_ONE() {
         {right && <div onClick={nextPage}>▶️</div>}
       </div>
       <div style={{display: 'flex', justifyContent: 'center'}}>
-        <Document file='/test.pdf' onLoadError={console.error} onLoadSuccess={onDocumentLoadSuccess}>
+        <Document file='/part_one_act_one.pdf' onLoadError={console.error} onLoadSuccess={onDocumentLoadSuccess}>
           <Page pageNumber={pageno} height={300} width={500} renderAnnotationLayer={false} renderTextLayer={false}/>
         </Document>
       </div>

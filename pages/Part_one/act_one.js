@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf'
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 
 export default function ACT_ONE() {  
 
@@ -14,6 +14,7 @@ export default function ACT_ONE() {
     pageno + 1 > totalPages ? setRight(false) : setPageno(pageno+1)
   }
   const previousPage = ()=>{
+    setRight(true)
     pageno - 1 < 1 ? setLeft(false) : setPageno(pageno-1)
   }
 
@@ -23,14 +24,12 @@ export default function ACT_ONE() {
 
   return (
     <div>
-      <div style={{display: 'flex', cursor: 'pointer', justifyContent: 'center'}}>
-        {left && <div onClick={previousPage}>◀️</div>}
-        {right && <div onClick={nextPage}>▶️</div>}
-      </div>
       <div style={{display: 'flex', justifyContent: 'center'}}>
-        <Document file='/test.pdf' onLoadError={console.error} onLoadSuccess={onDocumentLoadSuccess}>
-          <Page pageNumber={pageno} height={300} width={500} renderAnnotationLayer={false} renderTextLayer={false}/>
-        </Document>
+        {left && <div onClick={previousPage} style={{marginTop: 'auto', marginBottom: 'auto'}}><img src='../left-arrow.png' height={40} width={50} /></div>}
+          <Document file='/part_one_act_one.pdf' onLoadError={console.error} onLoadSuccess={onDocumentLoadSuccess}>
+            <Page pageNumber={pageno} height={300} width={500} renderAnnotationLayer={false} renderTextLayer={false}/>
+          </Document>
+        {right && <div onClick={nextPage} style={{marginTop: 'auto', marginBottom: 'auto'}}><img src="../right-arrow.png" height={40} width={50} /></div>}
       </div>
     </div>
   );
